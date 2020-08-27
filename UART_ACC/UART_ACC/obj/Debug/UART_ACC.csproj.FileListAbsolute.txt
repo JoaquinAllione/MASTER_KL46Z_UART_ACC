@@ -1,0 +1,9 @@
+C:\Users\Joaquin\Desktop\ACELEROMETRO_KL46Z\UART_ACC\UART_ACC\bin\Debug\UART_ACC.exe.config
+C:\Users\Joaquin\Desktop\ACELEROMETRO_KL46Z\UART_ACC\UART_ACC\bin\Debug\UART_ACC.exe
+C:\Users\Joaquin\Desktop\ACELEROMETRO_KL46Z\UART_ACC\UART_ACC\bin\Debug\UART_ACC.pdb
+C:\Users\Joaquin\Desktop\ACELEROMETRO_KL46Z\UART_ACC\UART_ACC\obj\Debug\UART_ACC.csprojResolveAssemblyReference.cache
+C:\Users\Joaquin\Desktop\ACELEROMETRO_KL46Z\UART_ACC\UART_ACC\obj\Debug\UART_ACC.Form1.resources
+C:\Users\Joaquin\Desktop\ACELEROMETRO_KL46Z\UART_ACC\UART_ACC\obj\Debug\UART_ACC.Properties.Resources.resources
+C:\Users\Joaquin\Desktop\ACELEROMETRO_KL46Z\UART_ACC\UART_ACC\obj\Debug\UART_ACC.csproj.GenerateResource.Cache
+C:\Users\Joaquin\Desktop\ACELEROMETRO_KL46Z\UART_ACC\UART_ACC\obj\Debug\UART_ACC.exe
+C:\Users\Joaquin\Desktop\ACELEROMETRO_KL46Z\UART_ACC\UART_ACC\obj\Debug\UART_ACC.pdb
