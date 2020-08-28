@@ -22,13 +22,15 @@ namespace UART_ACC
         private string strBufferOut;
         private bool estado_puerto;
 
+        private string eje_selec = "";
+
         char caracter_delimitador = ':';
 
         private void acceso_Form(string accion)
         {
             strBufferIn = accion;
             //----------- DATOS A PASAR -------------//
-            
+            txtDatosRecibidos.Text = strBufferIn;
             //---------------------------------------//
         }
 
@@ -48,7 +50,7 @@ namespace UART_ACC
         private void Form1_Load(object sender, EventArgs e)
         {
             //inicializacion de variables.
-            estado_puerto = false;
+            estado_puerto = false; //indicara si se esta conectado a un puerto o no
             strBufferIn = "";
             strBufferOut = "";
 
@@ -59,6 +61,7 @@ namespace UART_ACC
             btn_leer_3_ejes.Enabled = false;
             btnDesconectar.Enabled = false;
             btnConectar.Enabled = false;
+            btn_detener.Enabled = false;
 
             //inicializacion de TextBox / ComboBox
             cbxBaudRate.SelectedIndex = 9;
@@ -106,7 +109,29 @@ namespace UART_ACC
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                serialPort1.BaudRate = Int32.Parse(cbxBaudRate.Text);
+                serialPort1.Parity = Parity.None;
+                serialPort1.DataBits = 8;
+                serialPort1.StopBits = StopBits.One;
+                serialPort1.Handshake = Handshake.None;
+                serialPort1.PortName = cbxPuertos.Text;
+                serialPort1.Open();
+                estado_puerto = true;
+                btnDesconectar.Enabled = true;
+                btnConectar.Enabled = false;
+                btn_leer_X.Enabled = true;
+                btn_leer_Y.Enabled = true;
+                btn_leer_Z.Enabled = true;
+                btn_leer_3_ejes.Enabled = true;
+                btn_detener.Enabled = true;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                estado_puerto = false;
+            }
         }
 
         //para poder desplazar el formulario desde el panel superior / label del titulo en la cabecera.
@@ -139,6 +164,57 @@ namespace UART_ACC
                 Left = Left + (e.X - posX);
                 Top = Top + (e.Y - posY);
             }
+        }
+
+        private void btnDesconectar_Click(object sender, EventArgs e)
+        {
+            serialPort1.Close(); //se cierra la conexion con el puerto seleccionado
+            btnConectar.Enabled = true;
+            btnDesconectar.Enabled = false;
+            estado_puerto = false;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (estado_puerto == true)
+            {
+                serialPort1.Close();
+                estado_puerto = false;
+            }
+        }
+
+        private void btn_leer_X_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+            timer1.Start();
+            eje_selec = "X";
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort1.DiscardOutBuffer();
+                if(eje_selec == "X")
+                {
+                    strBufferOut = ":AccX\n";
+                }
+                serialPort1.Write(strBufferOut);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
+        }
+
+        private void btn_detener_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+        }
+
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            accesoInt(serialPort1.ReadLine());
         }
     }
 }

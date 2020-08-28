@@ -54,6 +54,7 @@
             this.btn_leer_X = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.btn_detener = new System.Windows.Forms.Button();
             this.panel_controles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -228,6 +229,7 @@
             this.btnDesconectar.TabIndex = 41;
             this.btnDesconectar.Text = "DESCONECTAR";
             this.btnDesconectar.UseVisualStyleBackColor = false;
+            this.btnDesconectar.Click += new System.EventHandler(this.btnDesconectar_Click);
             // 
             // btnConectar
             // 
@@ -358,10 +360,34 @@
             this.btn_leer_X.TabIndex = 54;
             this.btn_leer_X.Text = "X";
             this.btn_leer_X.UseVisualStyleBackColor = false;
+            this.btn_leer_X.Click += new System.EventHandler(this.btn_leer_X_Click);
             // 
             // timer1
             // 
-            this.timer1.Interval = 25;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
+            // btn_detener
+            // 
+            this.btn_detener.BackColor = System.Drawing.Color.Gainsboro;
+            this.btn_detener.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_detener.FlatAppearance.BorderSize = 0;
+            this.btn_detener.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.btn_detener.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.btn_detener.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_detener.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_detener.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btn_detener.Location = new System.Drawing.Point(321, 227);
+            this.btn_detener.Name = "btn_detener";
+            this.btn_detener.Size = new System.Drawing.Size(88, 23);
+            this.btn_detener.TabIndex = 58;
+            this.btn_detener.Text = "DETENER";
+            this.btn_detener.UseVisualStyleBackColor = false;
+            this.btn_detener.Click += new System.EventHandler(this.btn_detener_Click);
             // 
             // Form1
             // 
@@ -369,6 +395,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(441, 385);
+            this.Controls.Add(this.btn_detener);
             this.Controls.Add(this.btn_leer_3_ejes);
             this.Controls.Add(this.btn_leer_Y);
             this.Controls.Add(this.btn_leer_Z);
@@ -391,6 +418,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel_controles.ResumeLayout(false);
             this.panel_controles.PerformLayout();
@@ -425,6 +453,7 @@
         private System.Windows.Forms.Button btn_leer_X;
         private System.Windows.Forms.Timer timer1;
         private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Button btn_detener;
     }
 }
 
