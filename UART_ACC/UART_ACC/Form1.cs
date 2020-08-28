@@ -25,10 +25,11 @@ namespace UART_ACC
         private string eje_selec = "";
 
         char caracter_delimitador = ':';
-
+ 
         private void acceso_Form(string accion)
         {
             strBufferIn = accion;
+            
             //----------- DATOS A PASAR -------------//
             txtDatosRecibidos.Text = strBufferIn;
             //---------------------------------------//
@@ -198,6 +199,16 @@ namespace UART_ACC
                 if(eje_selec == "X")
                 {
                     strBufferOut = ":AccX\n";
+                }else if (eje_selec == "Y")
+                {
+                    strBufferOut = ":AccY\n";
+                }
+                else if (eje_selec == "Z")
+                {
+                    strBufferOut = ":AccZ\n";
+                }else
+                {
+                    strBufferOut = ":Axes\n";
                 }
                 serialPort1.Write(strBufferOut);
             }
@@ -214,7 +225,35 @@ namespace UART_ACC
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            accesoInt(serialPort1.ReadLine());
+            try
+            {
+                accesoInt(serialPort1.ReadLine());
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message.ToString());
+            }
+        }
+
+        private void btn_leer_Y_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+            timer1.Start();
+            eje_selec = "Y";
+        }
+
+        private void btn_leer_Z_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+            timer1.Start();
+            eje_selec = "Z";
+        }
+
+        private void btn_leer_3_ejes_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+            timer1.Start();
+            eje_selec = "X-Y-Z";
         }
     }
 }

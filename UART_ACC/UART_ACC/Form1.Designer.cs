@@ -309,6 +309,7 @@
             this.btn_leer_3_ejes.TabIndex = 57;
             this.btn_leer_3_ejes.Text = "X-Y-Z";
             this.btn_leer_3_ejes.UseVisualStyleBackColor = false;
+            this.btn_leer_3_ejes.Click += new System.EventHandler(this.btn_leer_3_ejes_Click);
             // 
             // btn_leer_Y
             // 
@@ -326,6 +327,7 @@
             this.btn_leer_Y.TabIndex = 56;
             this.btn_leer_Y.Text = "Y";
             this.btn_leer_Y.UseVisualStyleBackColor = false;
+            this.btn_leer_Y.Click += new System.EventHandler(this.btn_leer_Y_Click);
             // 
             // btn_leer_Z
             // 
@@ -343,6 +345,7 @@
             this.btn_leer_Z.TabIndex = 55;
             this.btn_leer_Z.Text = "Z";
             this.btn_leer_Z.UseVisualStyleBackColor = false;
+            this.btn_leer_Z.Click += new System.EventHandler(this.btn_leer_Z_Click);
             // 
             // btn_leer_X
             // 
@@ -364,7 +367,6 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // serialPort1
