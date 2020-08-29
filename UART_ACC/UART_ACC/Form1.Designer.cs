@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_controles = new System.Windows.Forms.Panel();
             this.label_titulo = new System.Windows.Forms.Label();
             this.button_minimizar = new System.Windows.Forms.Button();
@@ -48,14 +50,38 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtAccZ = new System.Windows.Forms.TextBox();
-            this.btn_leer_3_ejes = new System.Windows.Forms.Button();
-            this.btn_leer_Y = new System.Windows.Forms.Button();
-            this.btn_leer_Z = new System.Windows.Forms.Button();
-            this.btn_leer_X = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.btn_detener = new System.Windows.Forms.Button();
+            this.Check_X = new System.Windows.Forms.PictureBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.Check_Z = new System.Windows.Forms.PictureBox();
+            this.Check_Y = new System.Windows.Forms.PictureBox();
+            this.Uncheck_X = new System.Windows.Forms.PictureBox();
+            this.Uncheck_Y = new System.Windows.Forms.PictureBox();
+            this.Uncheck_Z = new System.Windows.Forms.PictureBox();
+            this.dataGridView_Acc = new System.Windows.Forms.DataGridView();
+            this.Muestra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Acc_Value_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Acc_Value_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Acc_Value_Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Check_X_Y_Z = new System.Windows.Forms.PictureBox();
+            this.Uncheck_X_Y_Z = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btn_instruccion = new System.Windows.Forms.Button();
+            this.label_conectado = new System.Windows.Forms.Label();
             this.panel_controles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Check_X)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Check_Z)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Check_Y)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Uncheck_X)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Uncheck_Y)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Uncheck_Z)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Acc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Check_X_Y_Z)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Uncheck_X_Y_Z)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_controles
@@ -67,7 +93,7 @@
             this.panel_controles.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_controles.Location = new System.Drawing.Point(0, 0);
             this.panel_controles.Name = "panel_controles";
-            this.panel_controles.Size = new System.Drawing.Size(441, 32);
+            this.panel_controles.Size = new System.Drawing.Size(440, 32);
             this.panel_controles.TabIndex = 37;
             this.panel_controles.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_controles_MouseMove);
             // 
@@ -92,7 +118,7 @@
             this.button_minimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
             this.button_minimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_minimizar.Image = ((System.Drawing.Image)(resources.GetObject("button_minimizar.Image")));
-            this.button_minimizar.Location = new System.Drawing.Point(377, 0);
+            this.button_minimizar.Location = new System.Drawing.Point(376, 0);
             this.button_minimizar.Name = "button_minimizar";
             this.button_minimizar.Size = new System.Drawing.Size(32, 32);
             this.button_minimizar.TabIndex = 37;
@@ -107,7 +133,7 @@
             this.button_cerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.button_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_cerrar.Image = ((System.Drawing.Image)(resources.GetObject("button_cerrar.Image")));
-            this.button_cerrar.Location = new System.Drawing.Point(409, 0);
+            this.button_cerrar.Location = new System.Drawing.Point(408, 0);
             this.button_cerrar.Name = "button_cerrar";
             this.button_cerrar.Size = new System.Drawing.Size(32, 32);
             this.button_cerrar.TabIndex = 37;
@@ -119,10 +145,10 @@
             this.txtAccX.BackColor = System.Drawing.Color.White;
             this.txtAccX.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAccX.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAccX.Location = new System.Drawing.Point(79, 162);
+            this.txtAccX.Location = new System.Drawing.Point(105, 163);
             this.txtAccX.Name = "txtAccX";
             this.txtAccX.ReadOnly = true;
-            this.txtAccX.Size = new System.Drawing.Size(64, 22);
+            this.txtAccX.Size = new System.Drawing.Size(43, 22);
             this.txtAccX.TabIndex = 49;
             // 
             // label3
@@ -130,7 +156,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(27, 165);
+            this.label3.Location = new System.Drawing.Point(53, 166);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 16);
             this.label3.TabIndex = 48;
@@ -254,10 +280,10 @@
             this.txtAccY.BackColor = System.Drawing.Color.White;
             this.txtAccY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAccY.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAccY.Location = new System.Drawing.Point(215, 162);
+            this.txtAccY.Location = new System.Drawing.Point(236, 164);
             this.txtAccY.Name = "txtAccY";
             this.txtAccY.ReadOnly = true;
-            this.txtAccY.Size = new System.Drawing.Size(64, 22);
+            this.txtAccY.Size = new System.Drawing.Size(42, 22);
             this.txtAccY.TabIndex = 51;
             // 
             // label6
@@ -265,7 +291,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label6.Location = new System.Drawing.Point(163, 164);
+            this.label6.Location = new System.Drawing.Point(184, 166);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 16);
             this.label6.TabIndex = 50;
@@ -276,7 +302,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label7.Location = new System.Drawing.Point(293, 163);
+            this.label7.Location = new System.Drawing.Point(315, 167);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 16);
             this.label7.TabIndex = 52;
@@ -287,83 +313,11 @@
             this.txtAccZ.BackColor = System.Drawing.Color.White;
             this.txtAccZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAccZ.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAccZ.Location = new System.Drawing.Point(345, 161);
+            this.txtAccZ.Location = new System.Drawing.Point(367, 165);
             this.txtAccZ.Name = "txtAccZ";
             this.txtAccZ.ReadOnly = true;
-            this.txtAccZ.Size = new System.Drawing.Size(64, 22);
+            this.txtAccZ.Size = new System.Drawing.Size(42, 22);
             this.txtAccZ.TabIndex = 53;
-            // 
-            // btn_leer_3_ejes
-            // 
-            this.btn_leer_3_ejes.BackColor = System.Drawing.Color.LightGray;
-            this.btn_leer_3_ejes.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_leer_3_ejes.FlatAppearance.BorderSize = 0;
-            this.btn_leer_3_ejes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
-            this.btn_leer_3_ejes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.btn_leer_3_ejes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_leer_3_ejes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_leer_3_ejes.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btn_leer_3_ejes.Location = new System.Drawing.Point(321, 196);
-            this.btn_leer_3_ejes.Name = "btn_leer_3_ejes";
-            this.btn_leer_3_ejes.Size = new System.Drawing.Size(88, 23);
-            this.btn_leer_3_ejes.TabIndex = 57;
-            this.btn_leer_3_ejes.Text = "X-Y-Z";
-            this.btn_leer_3_ejes.UseVisualStyleBackColor = false;
-            this.btn_leer_3_ejes.Click += new System.EventHandler(this.btn_leer_3_ejes_Click);
-            // 
-            // btn_leer_Y
-            // 
-            this.btn_leer_Y.BackColor = System.Drawing.Color.LightGray;
-            this.btn_leer_Y.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_leer_Y.FlatAppearance.BorderSize = 0;
-            this.btn_leer_Y.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
-            this.btn_leer_Y.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.btn_leer_Y.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_leer_Y.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_leer_Y.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btn_leer_Y.Location = new System.Drawing.Point(128, 196);
-            this.btn_leer_Y.Name = "btn_leer_Y";
-            this.btn_leer_Y.Size = new System.Drawing.Size(88, 23);
-            this.btn_leer_Y.TabIndex = 56;
-            this.btn_leer_Y.Text = "Y";
-            this.btn_leer_Y.UseVisualStyleBackColor = false;
-            this.btn_leer_Y.Click += new System.EventHandler(this.btn_leer_Y_Click);
-            // 
-            // btn_leer_Z
-            // 
-            this.btn_leer_Z.BackColor = System.Drawing.Color.LightGray;
-            this.btn_leer_Z.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_leer_Z.FlatAppearance.BorderSize = 0;
-            this.btn_leer_Z.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
-            this.btn_leer_Z.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.btn_leer_Z.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_leer_Z.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_leer_Z.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btn_leer_Z.Location = new System.Drawing.Point(224, 196);
-            this.btn_leer_Z.Name = "btn_leer_Z";
-            this.btn_leer_Z.Size = new System.Drawing.Size(88, 23);
-            this.btn_leer_Z.TabIndex = 55;
-            this.btn_leer_Z.Text = "Z";
-            this.btn_leer_Z.UseVisualStyleBackColor = false;
-            this.btn_leer_Z.Click += new System.EventHandler(this.btn_leer_Z_Click);
-            // 
-            // btn_leer_X
-            // 
-            this.btn_leer_X.BackColor = System.Drawing.Color.LightGray;
-            this.btn_leer_X.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_leer_X.FlatAppearance.BorderSize = 0;
-            this.btn_leer_X.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
-            this.btn_leer_X.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.btn_leer_X.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_leer_X.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_leer_X.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btn_leer_X.Location = new System.Drawing.Point(31, 196);
-            this.btn_leer_X.Name = "btn_leer_X";
-            this.btn_leer_X.Size = new System.Drawing.Size(88, 23);
-            this.btn_leer_X.TabIndex = 54;
-            this.btn_leer_X.Text = "X";
-            this.btn_leer_X.UseVisualStyleBackColor = false;
-            this.btn_leer_X.Click += new System.EventHandler(this.btn_leer_X_Click);
             // 
             // timer1
             // 
@@ -383,7 +337,7 @@
             this.btn_detener.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_detener.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_detener.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btn_detener.Location = new System.Drawing.Point(321, 227);
+            this.btn_detener.Location = new System.Drawing.Point(126, 387);
             this.btn_detener.Name = "btn_detener";
             this.btn_detener.Size = new System.Drawing.Size(88, 23);
             this.btn_detener.TabIndex = 58;
@@ -391,17 +345,252 @@
             this.btn_detener.UseVisualStyleBackColor = false;
             this.btn_detener.Click += new System.EventHandler(this.btn_detener_Click);
             // 
+            // Check_X
+            // 
+            this.Check_X.Image = ((System.Drawing.Image)(resources.GetObject("Check_X.Image")));
+            this.Check_X.Location = new System.Drawing.Point(30, 164);
+            this.Check_X.Name = "Check_X";
+            this.Check_X.Size = new System.Drawing.Size(20, 20);
+            this.Check_X.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Check_X.TabIndex = 59;
+            this.Check_X.TabStop = false;
+            this.Check_X.Click += new System.EventHandler(this.Check_X_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(176, 205);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(0, 20);
+            this.dateTimePicker1.TabIndex = 60;
+            // 
+            // Check_Z
+            // 
+            this.Check_Z.Image = ((System.Drawing.Image)(resources.GetObject("Check_Z.Image")));
+            this.Check_Z.Location = new System.Drawing.Point(291, 164);
+            this.Check_Z.Name = "Check_Z";
+            this.Check_Z.Size = new System.Drawing.Size(20, 20);
+            this.Check_Z.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Check_Z.TabIndex = 61;
+            this.Check_Z.TabStop = false;
+            this.Check_Z.Click += new System.EventHandler(this.Check_Z_Click);
+            // 
+            // Check_Y
+            // 
+            this.Check_Y.Image = ((System.Drawing.Image)(resources.GetObject("Check_Y.Image")));
+            this.Check_Y.Location = new System.Drawing.Point(160, 164);
+            this.Check_Y.Name = "Check_Y";
+            this.Check_Y.Size = new System.Drawing.Size(20, 20);
+            this.Check_Y.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Check_Y.TabIndex = 62;
+            this.Check_Y.TabStop = false;
+            this.Check_Y.Click += new System.EventHandler(this.Check_Y_Click);
+            // 
+            // Uncheck_X
+            // 
+            this.Uncheck_X.Image = ((System.Drawing.Image)(resources.GetObject("Uncheck_X.Image")));
+            this.Uncheck_X.Location = new System.Drawing.Point(30, 164);
+            this.Uncheck_X.Name = "Uncheck_X";
+            this.Uncheck_X.Size = new System.Drawing.Size(20, 20);
+            this.Uncheck_X.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Uncheck_X.TabIndex = 64;
+            this.Uncheck_X.TabStop = false;
+            this.Uncheck_X.Click += new System.EventHandler(this.Uncheck_X_Click);
+            // 
+            // Uncheck_Y
+            // 
+            this.Uncheck_Y.Image = ((System.Drawing.Image)(resources.GetObject("Uncheck_Y.Image")));
+            this.Uncheck_Y.Location = new System.Drawing.Point(160, 164);
+            this.Uncheck_Y.Name = "Uncheck_Y";
+            this.Uncheck_Y.Size = new System.Drawing.Size(20, 20);
+            this.Uncheck_Y.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Uncheck_Y.TabIndex = 65;
+            this.Uncheck_Y.TabStop = false;
+            this.Uncheck_Y.Click += new System.EventHandler(this.Uncheck_Y_Click);
+            // 
+            // Uncheck_Z
+            // 
+            this.Uncheck_Z.Image = ((System.Drawing.Image)(resources.GetObject("Uncheck_Z.Image")));
+            this.Uncheck_Z.Location = new System.Drawing.Point(291, 164);
+            this.Uncheck_Z.Name = "Uncheck_Z";
+            this.Uncheck_Z.Size = new System.Drawing.Size(20, 20);
+            this.Uncheck_Z.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Uncheck_Z.TabIndex = 66;
+            this.Uncheck_Z.TabStop = false;
+            this.Uncheck_Z.Click += new System.EventHandler(this.Uncheck_Z_Click);
+            // 
+            // dataGridView_Acc
+            // 
+            this.dataGridView_Acc.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView_Acc.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Acc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView_Acc.ColumnHeadersHeight = 25;
+            this.dataGridView_Acc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView_Acc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Muestra,
+            this.Acc_Value_X,
+            this.Acc_Value_Y,
+            this.Acc_Value_Z});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_Acc.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView_Acc.EnableHeadersVisualStyles = false;
+            this.dataGridView_Acc.Location = new System.Drawing.Point(30, 231);
+            this.dataGridView_Acc.Name = "dataGridView_Acc";
+            this.dataGridView_Acc.RowHeadersVisible = false;
+            this.dataGridView_Acc.Size = new System.Drawing.Size(379, 142);
+            this.dataGridView_Acc.TabIndex = 69;
+            // 
+            // Muestra
+            // 
+            this.Muestra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Muestra.HeaderText = "Muesta";
+            this.Muestra.Name = "Muestra";
+            // 
+            // Acc_Value_X
+            // 
+            this.Acc_Value_X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Acc_Value_X.HeaderText = "Eje X";
+            this.Acc_Value_X.Name = "Acc_Value_X";
+            // 
+            // Acc_Value_Y
+            // 
+            this.Acc_Value_Y.HeaderText = "Eje Y";
+            this.Acc_Value_Y.Name = "Acc_Value_Y";
+            // 
+            // Acc_Value_Z
+            // 
+            this.Acc_Value_Z.HeaderText = "Eje Z";
+            this.Acc_Value_Z.Name = "Acc_Value_Z";
+            // 
+            // Check_X_Y_Z
+            // 
+            this.Check_X_Y_Z.Image = ((System.Drawing.Image)(resources.GetObject("Check_X_Y_Z.Image")));
+            this.Check_X_Y_Z.Location = new System.Drawing.Point(29, 198);
+            this.Check_X_Y_Z.Name = "Check_X_Y_Z";
+            this.Check_X_Y_Z.Size = new System.Drawing.Size(20, 20);
+            this.Check_X_Y_Z.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Check_X_Y_Z.TabIndex = 63;
+            this.Check_X_Y_Z.TabStop = false;
+            this.Check_X_Y_Z.Click += new System.EventHandler(this.Check_X_Y_Z_Click);
+            // 
+            // Uncheck_X_Y_Z
+            // 
+            this.Uncheck_X_Y_Z.Image = ((System.Drawing.Image)(resources.GetObject("Uncheck_X_Y_Z.Image")));
+            this.Uncheck_X_Y_Z.Location = new System.Drawing.Point(29, 198);
+            this.Uncheck_X_Y_Z.Name = "Uncheck_X_Y_Z";
+            this.Uncheck_X_Y_Z.Size = new System.Drawing.Size(20, 20);
+            this.Uncheck_X_Y_Z.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Uncheck_X_Y_Z.TabIndex = 67;
+            this.Uncheck_X_Y_Z.TabStop = false;
+            this.Uncheck_X_Y_Z.Click += new System.EventHandler(this.Uncheck_X_Y_Z_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label5.Location = new System.Drawing.Point(52, 200);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(198, 16);
+            this.label5.TabIndex = 68;
+            this.label5.Text = "Lectura simultánea (X-Y-Z). ";
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnLimpiar.Location = new System.Drawing.Point(320, 387);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(88, 23);
+            this.btnLimpiar.TabIndex = 72;
+            this.btnLimpiar.Text = "LIMPIAR";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnGuardar.Location = new System.Drawing.Point(223, 387);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(88, 23);
+            this.btnGuardar.TabIndex = 71;
+            this.btnGuardar.Text = "GUARDAR";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            // 
+            // btn_instruccion
+            // 
+            this.btn_instruccion.BackColor = System.Drawing.Color.Gainsboro;
+            this.btn_instruccion.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_instruccion.FlatAppearance.BorderSize = 0;
+            this.btn_instruccion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.btn_instruccion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.btn_instruccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_instruccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_instruccion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btn_instruccion.Location = new System.Drawing.Point(30, 387);
+            this.btn_instruccion.Name = "btn_instruccion";
+            this.btn_instruccion.Size = new System.Drawing.Size(88, 23);
+            this.btn_instruccion.TabIndex = 70;
+            this.btn_instruccion.Text = "INICIAR";
+            this.btn_instruccion.UseVisualStyleBackColor = false;
+            // 
+            // label_conectado
+            // 
+            this.label_conectado.AutoSize = true;
+            this.label_conectado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_conectado.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label_conectado.Location = new System.Drawing.Point(27, 421);
+            this.label_conectado.Name = "label_conectado";
+            this.label_conectado.Size = new System.Drawing.Size(101, 13);
+            this.label_conectado.TabIndex = 73;
+            this.label_conectado.Text = "label_conectado";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(441, 385);
+            this.ClientSize = new System.Drawing.Size(440, 457);
+            this.Controls.Add(this.label_conectado);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btn_instruccion);
+            this.Controls.Add(this.dataGridView_Acc);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Uncheck_X_Y_Z);
+            this.Controls.Add(this.Uncheck_Z);
+            this.Controls.Add(this.Uncheck_Y);
+            this.Controls.Add(this.Uncheck_X);
+            this.Controls.Add(this.Check_X_Y_Z);
+            this.Controls.Add(this.Check_Y);
+            this.Controls.Add(this.Check_Z);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.Check_X);
             this.Controls.Add(this.btn_detener);
-            this.Controls.Add(this.btn_leer_3_ejes);
-            this.Controls.Add(this.btn_leer_Y);
-            this.Controls.Add(this.btn_leer_Z);
-            this.Controls.Add(this.btn_leer_X);
             this.Controls.Add(this.txtAccZ);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtAccY);
@@ -424,6 +613,15 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel_controles.ResumeLayout(false);
             this.panel_controles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Check_X)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Check_Z)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Check_Y)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Uncheck_X)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Uncheck_Y)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Uncheck_Z)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Acc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Check_X_Y_Z)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Uncheck_X_Y_Z)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,13 +647,28 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtAccZ;
-        private System.Windows.Forms.Button btn_leer_3_ejes;
-        private System.Windows.Forms.Button btn_leer_Y;
-        private System.Windows.Forms.Button btn_leer_Z;
-        private System.Windows.Forms.Button btn_leer_X;
         private System.Windows.Forms.Timer timer1;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Button btn_detener;
+        private System.Windows.Forms.PictureBox Check_X;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.PictureBox Check_Z;
+        private System.Windows.Forms.PictureBox Check_Y;
+        private System.Windows.Forms.PictureBox Uncheck_X;
+        private System.Windows.Forms.PictureBox Uncheck_Y;
+        private System.Windows.Forms.PictureBox Uncheck_Z;
+        private System.Windows.Forms.DataGridView dataGridView_Acc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Muestra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Acc_Value_X;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Acc_Value_Y;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Acc_Value_Z;
+        private System.Windows.Forms.PictureBox Check_X_Y_Z;
+        private System.Windows.Forms.PictureBox Uncheck_X_Y_Z;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btn_instruccion;
+        private System.Windows.Forms.Label label_conectado;
     }
 }
 

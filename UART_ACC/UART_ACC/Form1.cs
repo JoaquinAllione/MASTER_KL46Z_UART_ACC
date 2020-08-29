@@ -56,10 +56,6 @@ namespace UART_ACC
             strBufferOut = "";
 
             //inicializacion de botones
-            btn_leer_X.Enabled = false;
-            btn_leer_Y.Enabled = false;
-            btn_leer_Z.Enabled = false;
-            btn_leer_3_ejes.Enabled = false;
             btnDesconectar.Enabled = false;
             btnConectar.Enabled = false;
             btn_detener.Enabled = false;
@@ -70,6 +66,23 @@ namespace UART_ACC
             txtAccX.Text = "";
             txtAccY.Text = "";
             txtAccZ.Text = "";
+            label_conectado.Text = "Desconectado";
+
+            //inicializacion de los check boxes
+            Uncheck_X.Enabled = false;
+            Uncheck_Y.Enabled = false;
+            Uncheck_Z.Enabled = false;
+            Uncheck_X_Y_Z.Enabled = false;
+
+            Check_X.Visible = false;
+            Check_Y.Visible = false;
+            Check_Z.Visible = false;
+            Check_X_Y_Z.Visible = false;
+
+            Uncheck_X.Visible = true;
+            Uncheck_Y.Visible = true;
+            Uncheck_Z.Visible = true;
+            Uncheck_X_Y_Z.Visible = true;
 
             //buscando puertos de la PC / llenado de ComboBox para seleccionar puerto
             string[] Puertos_disponibles = SerialPort.GetPortNames();
@@ -122,11 +135,12 @@ namespace UART_ACC
                 estado_puerto = true;
                 btnDesconectar.Enabled = true;
                 btnConectar.Enabled = false;
-                btn_leer_X.Enabled = true;
-                btn_leer_Y.Enabled = true;
-                btn_leer_Z.Enabled = true;
-                btn_leer_3_ejes.Enabled = true;
+                Uncheck_X.Enabled = true;
+                Uncheck_Y.Enabled = true;
+                Uncheck_Z.Enabled = true;
+                Uncheck_X_Y_Z.Enabled = true;
                 btn_detener.Enabled = true;
+                label_conectado.Text = "Conectado a " + cbxPuertos.Text;
             }
             catch (Exception exc)
             {
@@ -173,6 +187,7 @@ namespace UART_ACC
             btnConectar.Enabled = true;
             btnDesconectar.Enabled = false;
             estado_puerto = false;
+            label_conectado.Text = "Desconectado";
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -235,25 +250,80 @@ namespace UART_ACC
             }
         }
 
-        private void btn_leer_Y_Click(object sender, EventArgs e)
+        private void Uncheck_X_Click(object sender, EventArgs e)
         {
+            Check_Y_Click( sender,  e);
+            Check_Z_Click( sender, e);
+            Check_X_Y_Z_Click(sender, e);
+            Check_X.Visible = true;
+            Uncheck_X.Visible = false;
+            timer1.Enabled = true;
+            timer1.Start();
+            eje_selec = "X";
+        }
+
+        private void Check_X_Click(object sender, EventArgs e)
+        {
+            Check_X.Visible = false;
+            Uncheck_X.Visible = true;
+            timer1.Stop();
+        }
+
+        private void Check_Y_Click(object sender, EventArgs e)
+        {
+            Check_Y.Visible = false;
+            Uncheck_Y.Visible = true;
+            timer1.Stop();
+        }
+
+        private void Uncheck_Y_Click(object sender, EventArgs e)
+        {
+            Check_X_Click(sender, e);
+            Check_Z_Click(sender, e);
+            Check_X_Y_Z_Click(sender, e);
+            Check_Y.Visible = true;
+            Uncheck_Y.Visible = false;
             timer1.Enabled = true;
             timer1.Start();
             eje_selec = "Y";
         }
 
-        private void btn_leer_Z_Click(object sender, EventArgs e)
+        private void Check_Z_Click(object sender, EventArgs e)
         {
+            Check_Z.Visible = false;
+            Uncheck_Z.Visible = true;
+            timer1.Stop();
+        }
+
+        private void Uncheck_Z_Click(object sender, EventArgs e)
+        {
+            Check_Y_Click(sender, e);
+            Check_X_Click(sender, e);
+            Check_X_Y_Z_Click(sender, e);
+            Check_Z.Visible = true;
+            Uncheck_Z.Visible = false;
             timer1.Enabled = true;
             timer1.Start();
             eje_selec = "Z";
         }
 
-        private void btn_leer_3_ejes_Click(object sender, EventArgs e)
+        private void Uncheck_X_Y_Z_Click(object sender, EventArgs e)
         {
+            Check_Y_Click(sender, e);
+            Check_X_Click(sender, e);
+            Check_Z_Click(sender, e);
+            Check_X_Y_Z.Visible = true;
+            Uncheck_X_Y_Z.Visible = false;
             timer1.Enabled = true;
             timer1.Start();
-            eje_selec = "X-Y-Z";
+            eje_selec = "X_Y_Z";
+        }
+
+        private void Check_X_Y_Z_Click(object sender, EventArgs e)
+        {
+            Check_X_Y_Z.Visible = false;
+            Uncheck_X_Y_Z.Visible = true;
+            timer1.Stop();
         }
     }
 }
