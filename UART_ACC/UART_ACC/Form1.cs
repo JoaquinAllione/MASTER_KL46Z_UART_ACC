@@ -29,9 +29,70 @@ namespace UART_ACC
         private void acceso_Form(string accion)
         {
             strBufferIn = accion;
-            
+            string[] cadena;
+            string signo = "";
+            cadena = strBufferIn.Split(caracter_delimitador);
             //----------- DATOS A PASAR -------------//
+
             txtDatosRecibidos.Text = strBufferIn;
+
+            if ((eje_selec == "X")|| (eje_selec == "Y")|| (eje_selec == "Z"))
+            {
+                if (cadena[2] == "N") //para evaluar el signo del valor leido
+                {
+                    signo = "-";
+                    //panel_X.BackColor = Color.Red;
+                }
+                else
+                {
+                    signo = "+";
+                    //panel_X.BackColor = Color.Green;
+                }
+                if (eje_selec == "X")//para evaluar el eje que se desea leer
+                {
+                    txtAccX.Text = signo + cadena[3];
+                }
+                else if (eje_selec == "Y")
+                {
+                    txtAccY.Text = signo + cadena[3];
+                }
+                else if (eje_selec == "Z")
+                {
+                    txtAccZ.Text = signo + cadena[3];
+                }
+            }else
+            {
+                if (cadena[1] == "N") //para evaluar el signo del valor leido
+                {
+                    signo = "-";
+                }
+                else
+                {
+                    signo = "+";
+                }
+                txtAccX.Text = signo + cadena[2];
+
+                if (cadena[3] == "N") //para evaluar el signo del valor leido
+                {
+                    signo = "-";
+                }
+                else
+                {
+                    signo = "+";
+                }
+                txtAccY.Text = signo + cadena[4];
+
+                if (cadena[5] == "N") //para evaluar el signo del valor leido
+                {
+                    signo = "-";
+                }
+                else
+                {
+                    signo = "+";
+                }
+                txtAccZ.Text = signo + cadena[6];
+            }
+            
             //---------------------------------------//
         }
 
@@ -183,7 +244,12 @@ namespace UART_ACC
 
         private void btnDesconectar_Click(object sender, EventArgs e)
         {
+            timer1.Stop();
             serialPort1.Close(); //se cierra la conexion con el puerto seleccionado
+            txtDatosRecibidos.Text = "";
+            txtAccX.Text = "";
+            txtAccY.Text = "";
+            txtAccZ.Text = "";
             btnConectar.Enabled = true;
             btnDesconectar.Enabled = false;
             estado_puerto = false;
@@ -257,8 +323,7 @@ namespace UART_ACC
             Check_X_Y_Z_Click(sender, e);
             Check_X.Visible = true;
             Uncheck_X.Visible = false;
-            timer1.Enabled = true;
-            timer1.Start();
+            
             eje_selec = "X";
         }
 
@@ -283,8 +348,7 @@ namespace UART_ACC
             Check_X_Y_Z_Click(sender, e);
             Check_Y.Visible = true;
             Uncheck_Y.Visible = false;
-            timer1.Enabled = true;
-            timer1.Start();
+            
             eje_selec = "Y";
         }
 
@@ -302,8 +366,7 @@ namespace UART_ACC
             Check_X_Y_Z_Click(sender, e);
             Check_Z.Visible = true;
             Uncheck_Z.Visible = false;
-            timer1.Enabled = true;
-            timer1.Start();
+            
             eje_selec = "Z";
         }
 
@@ -314,8 +377,7 @@ namespace UART_ACC
             Check_Z_Click(sender, e);
             Check_X_Y_Z.Visible = true;
             Uncheck_X_Y_Z.Visible = false;
-            timer1.Enabled = true;
-            timer1.Start();
+            
             eje_selec = "X_Y_Z";
         }
 
@@ -324,6 +386,12 @@ namespace UART_ACC
             Check_X_Y_Z.Visible = false;
             Uncheck_X_Y_Z.Visible = true;
             timer1.Stop();
+        }
+
+        private void btn_instruccion_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+            timer1.Start();
         }
     }
 }
