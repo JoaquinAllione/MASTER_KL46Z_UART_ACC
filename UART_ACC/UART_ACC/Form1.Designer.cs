@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_controles = new System.Windows.Forms.Panel();
             this.label_titulo = new System.Windows.Forms.Label();
             this.button_minimizar = new System.Windows.Forms.Button();
@@ -70,8 +70,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btn_instruccion = new System.Windows.Forms.Button();
             this.label_conectado = new System.Windows.Forms.Label();
+            this.btn_iniciar_lectura = new System.Windows.Forms.Button();
             this.panel_controles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Check_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Check_Z)).BeginInit();
@@ -422,14 +422,14 @@
             // 
             this.dataGridView_Acc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView_Acc.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Acc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Acc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView_Acc.ColumnHeadersHeight = 25;
             this.dataGridView_Acc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView_Acc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -437,14 +437,14 @@
             this.Acc_Value_X,
             this.Acc_Value_Y,
             this.Acc_Value_Z});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_Acc.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_Acc.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_Acc.EnableHeadersVisualStyles = false;
             this.dataGridView_Acc.Location = new System.Drawing.Point(30, 231);
             this.dataGridView_Acc.Name = "dataGridView_Acc";
@@ -503,9 +503,9 @@
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label5.Location = new System.Drawing.Point(52, 200);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(198, 16);
+            this.label5.Size = new System.Drawing.Size(233, 16);
             this.label5.TabIndex = 68;
-            this.label5.Text = "Lectura simultánea (X-Y-Z). ";
+            this.label5.Text = "Ejes X-Y-Z (Lectura simultánea). ";
             // 
             // btnLimpiar
             // 
@@ -541,23 +541,6 @@
             this.btnGuardar.Text = "GUARDAR";
             this.btnGuardar.UseVisualStyleBackColor = false;
             // 
-            // btn_instruccion
-            // 
-            this.btn_instruccion.BackColor = System.Drawing.Color.Gainsboro;
-            this.btn_instruccion.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_instruccion.FlatAppearance.BorderSize = 0;
-            this.btn_instruccion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
-            this.btn_instruccion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.btn_instruccion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_instruccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_instruccion.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.btn_instruccion.Location = new System.Drawing.Point(30, 387);
-            this.btn_instruccion.Name = "btn_instruccion";
-            this.btn_instruccion.Size = new System.Drawing.Size(88, 23);
-            this.btn_instruccion.TabIndex = 70;
-            this.btn_instruccion.Text = "INICIAR";
-            this.btn_instruccion.UseVisualStyleBackColor = false;
-            // 
             // label_conectado
             // 
             this.label_conectado.AutoSize = true;
@@ -569,16 +552,34 @@
             this.label_conectado.TabIndex = 73;
             this.label_conectado.Text = "label_conectado";
             // 
+            // btn_iniciar_lectura
+            // 
+            this.btn_iniciar_lectura.BackColor = System.Drawing.Color.Gainsboro;
+            this.btn_iniciar_lectura.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_iniciar_lectura.FlatAppearance.BorderSize = 0;
+            this.btn_iniciar_lectura.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.HotTrack;
+            this.btn_iniciar_lectura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.btn_iniciar_lectura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_iniciar_lectura.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_iniciar_lectura.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btn_iniciar_lectura.Location = new System.Drawing.Point(29, 387);
+            this.btn_iniciar_lectura.Name = "btn_iniciar_lectura";
+            this.btn_iniciar_lectura.Size = new System.Drawing.Size(88, 23);
+            this.btn_iniciar_lectura.TabIndex = 74;
+            this.btn_iniciar_lectura.Text = "INICIAR";
+            this.btn_iniciar_lectura.UseVisualStyleBackColor = false;
+            this.btn_iniciar_lectura.Click += new System.EventHandler(this.btn_iniciar_lectura_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(440, 457);
+            this.Controls.Add(this.btn_iniciar_lectura);
             this.Controls.Add(this.label_conectado);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.btn_instruccion);
             this.Controls.Add(this.dataGridView_Acc);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Uncheck_X_Y_Z);
@@ -667,8 +668,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btn_instruccion;
         private System.Windows.Forms.Label label_conectado;
+        private System.Windows.Forms.Button btn_iniciar_lectura;
     }
 }
 

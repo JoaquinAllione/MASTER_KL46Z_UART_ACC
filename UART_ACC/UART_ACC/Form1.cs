@@ -388,7 +388,8 @@ namespace UART_ACC
             timer1.Stop();
         }
 
-        private void btn_instruccion_Click(object sender, EventArgs e)
+
+        private void btn_iniciar_lectura_Click(object sender, EventArgs e)
         {
             timer1.Enabled = true;
             timer1.Start();
