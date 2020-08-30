@@ -25,12 +25,13 @@ namespace UART_ACC
         private string eje_selec = "";
 
         char caracter_delimitador = ':';
- 
+
         private void acceso_Form(string accion)
         {
             strBufferIn = accion;
             string[] cadena;
             string signo = "";
+            int s = 1;
             cadena = strBufferIn.Split(caracter_delimitador);
             //----------- DATOS A PASAR -------------//
 
@@ -41,6 +42,7 @@ namespace UART_ACC
                 if (cadena[2] == "N") //para evaluar el signo del valor leido
                 {
                     signo = "-";
+                    s = -1;
                     //panel_X.BackColor = Color.Red;
                 }
                 else
@@ -51,17 +53,30 @@ namespace UART_ACC
                 if (eje_selec == "X")//para evaluar el eje que se desea leer
                 {
                     txtAccX.Text = signo + cadena[3];
+                    int n = dataGridView_Acc.Rows.Add();
+                    dataGridView_Acc.Rows[n].Cells[0].Value = time;
+                    dataGridView_Acc.Rows[n].Cells[1].Value = signo + cadena[3];
+                    chart_Acc.Series["Acc_Value"].Points.AddY(s*(Convert.ToInt16(cadena[3])));
                 }
                 else if (eje_selec == "Y")
                 {
                     txtAccY.Text = signo + cadena[3];
+                    int n = dataGridView_Acc.Rows.Add();
+                    dataGridView_Acc.Rows[n].Cells[0].Value = time;
+                    dataGridView_Acc.Rows[n].Cells[2].Value = signo + cadena[3];
+                    chart_Acc.Series["Acc_Value"].Points.AddY(s * (Convert.ToInt16(cadena[3])));
                 }
                 else if (eje_selec == "Z")
                 {
                     txtAccZ.Text = signo + cadena[3];
+                    int n = dataGridView_Acc.Rows.Add();
+                    dataGridView_Acc.Rows[n].Cells[0].Value = time;
+                    dataGridView_Acc.Rows[n].Cells[3].Value = signo + cadena[3];
+                    chart_Acc.Series["Acc_Value"].Points.AddY(s * (Convert.ToInt16(cadena[3])));
                 }
             }else
             {
+                int n = dataGridView_Acc.Rows.Add();
                 if (cadena[1] == "N") //para evaluar el signo del valor leido
                 {
                     signo = "-";
@@ -71,7 +86,7 @@ namespace UART_ACC
                     signo = "+";
                 }
                 txtAccX.Text = signo + cadena[2];
-
+                dataGridView_Acc.Rows[n].Cells[1].Value = signo + cadena[2];
                 if (cadena[3] == "N") //para evaluar el signo del valor leido
                 {
                     signo = "-";
@@ -81,7 +96,7 @@ namespace UART_ACC
                     signo = "+";
                 }
                 txtAccY.Text = signo + cadena[4];
-
+                dataGridView_Acc.Rows[n].Cells[2].Value = signo + cadena[4];
                 if (cadena[5] == "N") //para evaluar el signo del valor leido
                 {
                     signo = "-";
@@ -91,6 +106,7 @@ namespace UART_ACC
                     signo = "+";
                 }
                 txtAccZ.Text = signo + cadena[6];
+                dataGridView_Acc.Rows[n].Cells[3].Value = signo + cadena[6];
             }
             
             //---------------------------------------//
@@ -120,6 +136,7 @@ namespace UART_ACC
             btnDesconectar.Enabled = false;
             btnConectar.Enabled = false;
             btn_detener.Enabled = false;
+            btn_iniciar_lectura.Enabled = false;
 
             //inicializacion de TextBox / ComboBox
             cbxBaudRate.SelectedIndex = 9;
@@ -144,6 +161,9 @@ namespace UART_ACC
             Uncheck_Y.Visible = true;
             Uncheck_Z.Visible = true;
             Uncheck_X_Y_Z.Visible = true;
+
+            //inicializacion de la grafica
+            init_chart_Acc();
 
             //buscando puertos de la PC / llenado de ComboBox para seleccionar puerto
             string[] Puertos_disponibles = SerialPort.GetPortNames();
@@ -242,14 +262,35 @@ namespace UART_ACC
             }
         }
 
+        public void init_chart_Acc()
+        {
+            int x;
+            int y;
+
+            for (x = 0; x < 99; x++)
+            {
+                y = (int)(100 *(1 - Math.Pow(2.7, -0.05 * x)));
+                chart_Acc.Series["Acc_Value"].Points.AddY(Convert.ToInt16(y));
+            }
+        }
+
+        private void limpiar_datos()
+        {
+            //limpia tanto los TextBoxs como el DataGridView.
+            txtDatosRecibidos.Text = ""; 
+            txtAccX.Text = "";
+            txtAccY.Text = "";
+            txtAccZ.Text = "";
+            chart_Acc.Series["Acc_Value"].Points.Clear();
+            dataGridView_Acc.Rows.Clear();
+            
+        }
+
         private void btnDesconectar_Click(object sender, EventArgs e)
         {
             timer1.Stop();
             serialPort1.Close(); //se cierra la conexion con el puerto seleccionado
-            txtDatosRecibidos.Text = "";
-            txtAccX.Text = "";
-            txtAccY.Text = "";
-            txtAccZ.Text = "";
+            limpiar_datos();
             btnConectar.Enabled = true;
             btnDesconectar.Enabled = false;
             estado_puerto = false;
@@ -271,9 +312,10 @@ namespace UART_ACC
             timer1.Start();
             eje_selec = "X";
         }
-
+        int time = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
+            time++;
             try
             {
                 serialPort1.DiscardOutBuffer();
@@ -287,7 +329,7 @@ namespace UART_ACC
                 else if (eje_selec == "Z")
                 {
                     strBufferOut = ":AccZ\n";
-                }else
+                }else if (eje_selec == "X_Y_Z")
                 {
                     strBufferOut = ":Axes\n";
                 }
@@ -323,12 +365,13 @@ namespace UART_ACC
             Check_X_Y_Z_Click(sender, e);
             Check_X.Visible = true;
             Uncheck_X.Visible = false;
-            
+            btn_iniciar_lectura.Enabled = true;
             eje_selec = "X";
         }
 
         private void Check_X_Click(object sender, EventArgs e)
         {
+            btn_iniciar_lectura.Enabled = false;
             Check_X.Visible = false;
             Uncheck_X.Visible = true;
             timer1.Stop();
@@ -336,6 +379,7 @@ namespace UART_ACC
 
         private void Check_Y_Click(object sender, EventArgs e)
         {
+            btn_iniciar_lectura.Enabled = false;
             Check_Y.Visible = false;
             Uncheck_Y.Visible = true;
             timer1.Stop();
@@ -346,6 +390,7 @@ namespace UART_ACC
             Check_X_Click(sender, e);
             Check_Z_Click(sender, e);
             Check_X_Y_Z_Click(sender, e);
+            btn_iniciar_lectura.Enabled = true;
             Check_Y.Visible = true;
             Uncheck_Y.Visible = false;
             
@@ -354,6 +399,7 @@ namespace UART_ACC
 
         private void Check_Z_Click(object sender, EventArgs e)
         {
+            btn_iniciar_lectura.Enabled = false;
             Check_Z.Visible = false;
             Uncheck_Z.Visible = true;
             timer1.Stop();
@@ -364,6 +410,7 @@ namespace UART_ACC
             Check_Y_Click(sender, e);
             Check_X_Click(sender, e);
             Check_X_Y_Z_Click(sender, e);
+            btn_iniciar_lectura.Enabled = true;
             Check_Z.Visible = true;
             Uncheck_Z.Visible = false;
             
@@ -375,6 +422,7 @@ namespace UART_ACC
             Check_Y_Click(sender, e);
             Check_X_Click(sender, e);
             Check_Z_Click(sender, e);
+            btn_iniciar_lectura.Enabled = true;
             Check_X_Y_Z.Visible = true;
             Uncheck_X_Y_Z.Visible = false;
             
@@ -383,14 +431,21 @@ namespace UART_ACC
 
         private void Check_X_Y_Z_Click(object sender, EventArgs e)
         {
+            btn_iniciar_lectura.Enabled = false;
             Check_X_Y_Z.Visible = false;
             Uncheck_X_Y_Z.Visible = true;
             timer1.Stop();
         }
 
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            limpiar_datos();
+        }
 
         private void btn_iniciar_lectura_Click(object sender, EventArgs e)
         {
+            time = 0;
+            limpiar_datos();
             timer1.Enabled = true;
             timer1.Start();
         }

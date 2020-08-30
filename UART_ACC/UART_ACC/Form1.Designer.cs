@@ -30,8 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel_controles = new System.Windows.Forms.Panel();
             this.label_titulo = new System.Windows.Forms.Label();
             this.button_minimizar = new System.Windows.Forms.Button();
@@ -72,6 +74,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label_conectado = new System.Windows.Forms.Label();
             this.btn_iniciar_lectura = new System.Windows.Forms.Button();
+            this.chart_Acc = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel_controles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Check_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Check_Z)).BeginInit();
@@ -82,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Acc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Check_X_Y_Z)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Uncheck_X_Y_Z)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Acc)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_controles
@@ -93,7 +97,7 @@
             this.panel_controles.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_controles.Location = new System.Drawing.Point(0, 0);
             this.panel_controles.Name = "panel_controles";
-            this.panel_controles.Size = new System.Drawing.Size(440, 32);
+            this.panel_controles.Size = new System.Drawing.Size(849, 32);
             this.panel_controles.TabIndex = 37;
             this.panel_controles.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_controles_MouseMove);
             // 
@@ -118,7 +122,7 @@
             this.button_minimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
             this.button_minimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_minimizar.Image = ((System.Drawing.Image)(resources.GetObject("button_minimizar.Image")));
-            this.button_minimizar.Location = new System.Drawing.Point(376, 0);
+            this.button_minimizar.Location = new System.Drawing.Point(785, 0);
             this.button_minimizar.Name = "button_minimizar";
             this.button_minimizar.Size = new System.Drawing.Size(32, 32);
             this.button_minimizar.TabIndex = 37;
@@ -133,7 +137,7 @@
             this.button_cerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.button_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_cerrar.Image = ((System.Drawing.Image)(resources.GetObject("button_cerrar.Image")));
-            this.button_cerrar.Location = new System.Drawing.Point(408, 0);
+            this.button_cerrar.Location = new System.Drawing.Point(817, 0);
             this.button_cerrar.Name = "button_cerrar";
             this.button_cerrar.Size = new System.Drawing.Size(32, 32);
             this.button_cerrar.TabIndex = 37;
@@ -422,14 +426,14 @@
             // 
             this.dataGridView_Acc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView_Acc.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Acc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Acc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView_Acc.ColumnHeadersHeight = 25;
             this.dataGridView_Acc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView_Acc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -437,14 +441,14 @@
             this.Acc_Value_X,
             this.Acc_Value_Y,
             this.Acc_Value_Z});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_Acc.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_Acc.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView_Acc.EnableHeadersVisualStyles = false;
             this.dataGridView_Acc.Location = new System.Drawing.Point(30, 231);
             this.dataGridView_Acc.Name = "dataGridView_Acc";
@@ -523,6 +527,7 @@
             this.btnLimpiar.TabIndex = 72;
             this.btnLimpiar.Text = "LIMPIAR";
             this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnGuardar
             // 
@@ -565,17 +570,53 @@
             this.btn_iniciar_lectura.Location = new System.Drawing.Point(29, 387);
             this.btn_iniciar_lectura.Name = "btn_iniciar_lectura";
             this.btn_iniciar_lectura.Size = new System.Drawing.Size(88, 23);
-            this.btn_iniciar_lectura.TabIndex = 74;
+            this.btn_iniciar_lectura.TabIndex = 75;
             this.btn_iniciar_lectura.Text = "INICIAR";
             this.btn_iniciar_lectura.UseVisualStyleBackColor = false;
             this.btn_iniciar_lectura.Click += new System.EventHandler(this.btn_iniciar_lectura_Click);
+            // 
+            // chart_Acc
+            // 
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX.MinorGrid.Enabled = true;
+            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea1.AxisX.Title = "Muestras";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisX.TitleForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            chartArea1.AxisX2.MinorGrid.Enabled = true;
+            chartArea1.AxisX2.MinorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisX2.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisY.MinorGrid.Enabled = true;
+            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Silver;
+            chartArea1.AxisY.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea1.AxisY.Title = "Aceleración [décimas de G]";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.TitleForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            chartArea1.Name = "ChartArea1";
+            this.chart_Acc.ChartAreas.Add(chartArea1);
+            this.chart_Acc.Location = new System.Drawing.Point(416, 39);
+            this.chart_Acc.Name = "chart_Acc";
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Color = System.Drawing.SystemColors.MenuHighlight;
+            series1.Name = "Acc_Value";
+            this.chart_Acc.Series.Add(series1);
+            this.chart_Acc.Size = new System.Drawing.Size(421, 300);
+            this.chart_Acc.TabIndex = 76;
+            this.chart_Acc.Text = "chart_Acc";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(440, 457);
+            this.ClientSize = new System.Drawing.Size(849, 457);
+            this.Controls.Add(this.chart_Acc);
             this.Controls.Add(this.btn_iniciar_lectura);
             this.Controls.Add(this.label_conectado);
             this.Controls.Add(this.btnLimpiar);
@@ -623,6 +664,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Acc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Check_X_Y_Z)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Uncheck_X_Y_Z)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Acc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -670,6 +712,7 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label_conectado;
         private System.Windows.Forms.Button btn_iniciar_lectura;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_Acc;
     }
 }
 
