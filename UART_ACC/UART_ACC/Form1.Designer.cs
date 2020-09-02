@@ -34,6 +34,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel_controles = new System.Windows.Forms.Panel();
             this.label_titulo = new System.Windows.Forms.Label();
             this.button_minimizar = new System.Windows.Forms.Button();
@@ -97,7 +99,7 @@
             this.panel_controles.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_controles.Location = new System.Drawing.Point(0, 0);
             this.panel_controles.Name = "panel_controles";
-            this.panel_controles.Size = new System.Drawing.Size(849, 32);
+            this.panel_controles.Size = new System.Drawing.Size(969, 32);
             this.panel_controles.TabIndex = 37;
             this.panel_controles.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_controles_MouseMove);
             // 
@@ -107,7 +109,7 @@
             this.label_titulo.AutoSize = true;
             this.label_titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_titulo.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_titulo.Location = new System.Drawing.Point(131, 8);
+            this.label_titulo.Location = new System.Drawing.Point(347, 8);
             this.label_titulo.Name = "label_titulo";
             this.label_titulo.Size = new System.Drawing.Size(183, 16);
             this.label_titulo.TabIndex = 37;
@@ -122,7 +124,7 @@
             this.button_minimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
             this.button_minimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_minimizar.Image = ((System.Drawing.Image)(resources.GetObject("button_minimizar.Image")));
-            this.button_minimizar.Location = new System.Drawing.Point(785, 0);
+            this.button_minimizar.Location = new System.Drawing.Point(905, 0);
             this.button_minimizar.Name = "button_minimizar";
             this.button_minimizar.Size = new System.Drawing.Size(32, 32);
             this.button_minimizar.TabIndex = 37;
@@ -137,7 +139,7 @@
             this.button_cerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.button_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_cerrar.Image = ((System.Drawing.Image)(resources.GetObject("button_cerrar.Image")));
-            this.button_cerrar.Location = new System.Drawing.Point(817, 0);
+            this.button_cerrar.Location = new System.Drawing.Point(937, 0);
             this.button_cerrar.Name = "button_cerrar";
             this.button_cerrar.Size = new System.Drawing.Size(32, 32);
             this.button_cerrar.TabIndex = 37;
@@ -577,36 +579,34 @@
             // 
             // chart_Acc
             // 
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gray;
             chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisX.MinorGrid.Enabled = true;
-            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Silver;
             chartArea1.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.AxisX.Title = "Muestras";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisX.TitleForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            chartArea1.AxisX2.MinorGrid.Enabled = true;
-            chartArea1.AxisX2.MinorGrid.LineColor = System.Drawing.Color.Silver;
-            chartArea1.AxisX2.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea1.AxisX2.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
             chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.AxisY.MinorGrid.Enabled = true;
-            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Silver;
             chartArea1.AxisY.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.AxisY.Title = "Aceleración [décimas de G]";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.TitleForeColor = System.Drawing.SystemColors.ControlDarkDark;
             chartArea1.Name = "ChartArea1";
             this.chart_Acc.ChartAreas.Add(chartArea1);
-            this.chart_Acc.Location = new System.Drawing.Point(416, 39);
+            this.chart_Acc.Location = new System.Drawing.Point(412, 38);
             this.chart_Acc.Name = "chart_Acc";
+            series1.BorderColor = System.Drawing.Color.Blue;
             series1.BorderWidth = 3;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Color = System.Drawing.SystemColors.MenuHighlight;
-            series1.Name = "Acc_Value";
+            series1.Name = "Acc_Value_X";
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Color = System.Drawing.Color.Green;
+            series2.Name = "Acc_Value_Y";
+            series3.BorderColor = System.Drawing.Color.Red;
+            series3.BorderWidth = 3;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Name = "Acc_Value_Z";
             this.chart_Acc.Series.Add(series1);
-            this.chart_Acc.Size = new System.Drawing.Size(421, 300);
+            this.chart_Acc.Series.Add(series2);
+            this.chart_Acc.Series.Add(series3);
+            this.chart_Acc.Size = new System.Drawing.Size(554, 396);
             this.chart_Acc.TabIndex = 76;
             this.chart_Acc.Text = "chart_Acc";
             // 
@@ -615,7 +615,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(849, 457);
+            this.ClientSize = new System.Drawing.Size(969, 457);
             this.Controls.Add(this.chart_Acc);
             this.Controls.Add(this.btn_iniciar_lectura);
             this.Controls.Add(this.label_conectado);

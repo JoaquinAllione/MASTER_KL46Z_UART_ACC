@@ -30,85 +30,72 @@ namespace UART_ACC
         {
             strBufferIn = accion;
             string[] cadena;
-            string signo = "";
+            int signo;
             int s = 1;
+            int value_X;
+            int value_Y;
+            int value_Z;
+
             cadena = strBufferIn.Split(caracter_delimitador);
             //----------- DATOS A PASAR -------------//
 
             txtDatosRecibidos.Text = strBufferIn;
 
-            if ((eje_selec == "X")|| (eje_selec == "Y")|| (eje_selec == "Z"))
+            int n = dataGridView_Acc.Rows.Add();
+
+            dataGridView_Acc.Rows[n].Cells[0].Value = time;
+
+            if (cadena[1] == "N") //para evaluar el signo del valor leido
             {
-                if (cadena[2] == "N") //para evaluar el signo del valor leido
-                {
-                    signo = "-";
-                    s = -1;
-                    //panel_X.BackColor = Color.Red;
-                }
-                else
-                {
-                    signo = "+";
-                    //panel_X.BackColor = Color.Green;
-                }
-                if (eje_selec == "X")//para evaluar el eje que se desea leer
-                {
-                    txtAccX.Text = signo + cadena[3];
-                    int n = dataGridView_Acc.Rows.Add();
-                    dataGridView_Acc.Rows[n].Cells[0].Value = time;
-                    dataGridView_Acc.Rows[n].Cells[1].Value = signo + cadena[3];
-                    chart_Acc.Series["Acc_Value"].Points.AddY(s*(Convert.ToInt16(cadena[3])));
-                }
-                else if (eje_selec == "Y")
-                {
-                    txtAccY.Text = signo + cadena[3];
-                    int n = dataGridView_Acc.Rows.Add();
-                    dataGridView_Acc.Rows[n].Cells[0].Value = time;
-                    dataGridView_Acc.Rows[n].Cells[2].Value = signo + cadena[3];
-                    chart_Acc.Series["Acc_Value"].Points.AddY(s * (Convert.ToInt16(cadena[3])));
-                }
-                else if (eje_selec == "Z")
-                {
-                    txtAccZ.Text = signo + cadena[3];
-                    int n = dataGridView_Acc.Rows.Add();
-                    dataGridView_Acc.Rows[n].Cells[0].Value = time;
-                    dataGridView_Acc.Rows[n].Cells[3].Value = signo + cadena[3];
-                    chart_Acc.Series["Acc_Value"].Points.AddY(s * (Convert.ToInt16(cadena[3])));
-                }
+                signo = -1;
+            }
+            else
+            {
+                signo = 1;
+            }
+            value_X = signo * Convert.ToInt16(cadena[2]);
+            txtAccX.Text = Convert.ToString(value_X);
+            dataGridView_Acc.Rows[n].Cells[1].Value = value_X;
+
+            if (cadena[3] == "N") //para evaluar el signo del valor leido
+            {
+                signo = -1;
+            }
+            else
+            {
+                signo = 1;
+            }
+            value_Y = signo * Convert.ToInt16(cadena[4]);
+            txtAccY.Text = Convert.ToString(value_Y);
+            dataGridView_Acc.Rows[n].Cells[2].Value = value_Y;
+
+            if (cadena[5] == "N") //para evaluar el signo del valor leido
+            {
+                signo = -1;
+            }
+            else
+            {
+                signo = 1;
+            }
+            value_Z = signo * Convert.ToInt16(cadena[6]);
+            txtAccZ.Text = Convert.ToString(value_Z);
+            dataGridView_Acc.Rows[n].Cells[3].Value = value_Z;
+
+            if(eje_selec == "X")
+            {
+                chart_Acc.Series["Acc_Value_X"].Points.AddY(value_X);
+            } else if (eje_selec == "Y")
+            {
+                chart_Acc.Series["Acc_Value_Y"].Points.AddY(value_Y);
+            } else if (eje_selec == "Z")
+            {
+                chart_Acc.Series["Acc_Value_Z"].Points.AddY(value_Z);
             }else
             {
-                int n = dataGridView_Acc.Rows.Add();
-                if (cadena[1] == "N") //para evaluar el signo del valor leido
-                {
-                    signo = "-";
-                }
-                else
-                {
-                    signo = "+";
-                }
-                txtAccX.Text = signo + cadena[2];
-                dataGridView_Acc.Rows[n].Cells[1].Value = signo + cadena[2];
-                if (cadena[3] == "N") //para evaluar el signo del valor leido
-                {
-                    signo = "-";
-                }
-                else
-                {
-                    signo = "+";
-                }
-                txtAccY.Text = signo + cadena[4];
-                dataGridView_Acc.Rows[n].Cells[2].Value = signo + cadena[4];
-                if (cadena[5] == "N") //para evaluar el signo del valor leido
-                {
-                    signo = "-";
-                }
-                else
-                {
-                    signo = "+";
-                }
-                txtAccZ.Text = signo + cadena[6];
-                dataGridView_Acc.Rows[n].Cells[3].Value = signo + cadena[6];
+                chart_Acc.Series["Acc_Value_X"].Points.AddY(value_X);
+                chart_Acc.Series["Acc_Value_Y"].Points.AddY(value_Y);
+                chart_Acc.Series["Acc_Value_Z"].Points.AddY(value_Z);
             }
-            
             //---------------------------------------//
         }
 
@@ -270,7 +257,7 @@ namespace UART_ACC
             for (x = 0; x < 99; x++)
             {
                 y = (int)(100 *(1 - Math.Pow(2.7, -0.05 * x)));
-                chart_Acc.Series["Acc_Value"].Points.AddY(Convert.ToInt16(y));
+                chart_Acc.Series["Acc_Value_X"].Points.AddY(Convert.ToInt16(y));
             }
         }
 
@@ -281,7 +268,9 @@ namespace UART_ACC
             txtAccX.Text = "";
             txtAccY.Text = "";
             txtAccZ.Text = "";
-            chart_Acc.Series["Acc_Value"].Points.Clear();
+            chart_Acc.Series["Acc_Value_X"].Points.Clear();
+            chart_Acc.Series["Acc_Value_Y"].Points.Clear();
+            chart_Acc.Series["Acc_Value_Z"].Points.Clear();
             dataGridView_Acc.Rows.Clear();
             
         }
@@ -312,27 +301,16 @@ namespace UART_ACC
             timer1.Start();
             eje_selec = "X";
         }
-        int time = 0;
+
+        Int64 time = 0;
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
             time++;
             try
             {
                 serialPort1.DiscardOutBuffer();
-                if(eje_selec == "X")
-                {
-                    strBufferOut = ":AccX\n";
-                }else if (eje_selec == "Y")
-                {
-                    strBufferOut = ":AccY\n";
-                }
-                else if (eje_selec == "Z")
-                {
-                    strBufferOut = ":AccZ\n";
-                }else if (eje_selec == "X_Y_Z")
-                {
-                    strBufferOut = ":Axes\n";
-                }
+                strBufferOut = ":Axes\n";     
                 serialPort1.Write(strBufferOut);
             }
             catch (Exception exc)
